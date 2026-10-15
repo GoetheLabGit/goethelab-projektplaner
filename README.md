@@ -11,11 +11,11 @@ Gantt-Diagramm für Projekt- und Abschlussarbeiten, direkt im Browser. Der Plan 
 
 ## Vorgehen
 
-1. **Eigene YAML-Datei erstellen:** Notizen, Exposé, Word-Dokument o. Ä. zusammen mit `data_example.yaml` an eine KI geben, z. B. *„Erstelle aus meinen Unterlagen einen Projektplan im Format dieser YAML-Datei.“* Der Kommentarkopf der Vorlage erklärt alle Felder. Ergebnis als `.yaml` speichern.
-2. **`gantt.html` in Edge oder Chrome öffnen.** Ohne verbundene Datei zeigt die Seite das Beispielprojekt.
-3. **Einmalig verbinden:** **„YAML-Datei verbinden"** klicken, die eigene Datei wählen und im Dialog **„Bei jedem Besuch zulassen"** anklicken. Danach lädt die Seite die Datei bei jedem Öffnen selbst.
-4. **Bearbeiten** im Browser oder direkt in der Datei. Änderungen an der Datei übernimmt die Seite nach wenigen Sekunden, Änderungen im Browser schreibt **„Automatisch speichern"** (unter ⚙) in die Datei.
-5. Weitere Pläne jederzeit über **„Öffnen"** laden.
+1. **Eigene YAML-Datei erstellen:** Notizen, Exposé, Word-Dokument o. Ä. zusammen mit `data_example.yaml` an eine KI geben, z. B. *„Erstelle aus meinen Unterlagen einen Projektplan im Format dieser YAML-Datei.“* Ergebnis als `.yaml` speichern.
+2. **`gantt.html` in Edge oder Chrome öffnen.** 
+3. **Einmalig verbinden:** **„YAML-Datei verbinden"** klicken, die eigene Datei wählen und im Dialog **„Bei jedem Besuch zulassen"** anklicken. Änderungen werden nun automatisch gespeichert.
+4. **Bearbeiten** im Browser oder direkt in der YAML-Datei möglich.
+5. **Weitere Funktionen** (im Browser unter ⚙): Andere Pläne öffnen, als PDF exportieren usw.
 
 ## Aufbau der YAML-Datei
 
@@ -29,7 +29,7 @@ phasen:
   - name: Phase 1
     aufgaben:
       - {id: a, name: Aufgabe A, dauer: 5, fortschritt: 0.2}
-      - {id: b, name: Aufgabe B, nach: a, dauer: 3}
+      - {id: b, name: "Aufgabe B, mit Komma", nach: a, dauer: 3}   # Komma oder : im Text → Anführungszeichen
 ```
 
 | Feld | Bedeutung |
@@ -43,5 +43,3 @@ phasen:
 | `typ` | `arbeit` (Standard), `doku` oder `meilenstein` |
 | `notiz` | optionaler Zusatz, erscheint unter dem Namen |
 | `farbe` | optional, bei Phase oder Aufgabe: `stahl`, `salbei`, `sand`, `flieder`, `schiefer`, `oliv`, `taupe`, `himmel` |
-
-Werte mit Komma oder Doppelpunkt in Anführungszeichen setzen. Ein vollständiges Beispiel mit allen Feldern ist `data_example.yaml`.
