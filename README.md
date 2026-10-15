@@ -13,7 +13,7 @@ Gantt-Diagramm für Projekt- und Abschlussarbeiten, direkt im Browser. Der Plan 
 
 1. **Eigene YAML-Datei erstellen:** Notizen, Exposé, Word-Dokument o. Ä. zusammen mit `data_example.yaml` an eine KI geben, z. B. *„Erstelle aus meinen Unterlagen einen Projektplan im Format dieser YAML-Datei.“* Ergebnis als `.yaml` speichern.
 2. **`gantt.html` in Edge oder Chrome öffnen.** 
-3. **Einmalig verbinden:** **„YAML-Datei verbinden"** klicken, die eigene Datei wählen und im Dialog **„Bei jedem Besuch zulassen"** anklicken. Änderungen werden nun automatisch gespeichert.
+3. **Einmalig verbinden:** *„YAML-Datei verbinden"* klicken, die eigene Datei wählen und im Dialog *„Bei jedem Besuch zulassen"* anklicken. Änderungen werden nun automatisch gespeichert.
 4. **Bearbeiten** im Browser oder direkt in der YAML-Datei möglich.
 5. **Weitere Funktionen** (im Browser unter ⚙): Andere Pläne öffnen, als PDF exportieren usw.
 
