@@ -1024,7 +1024,7 @@ function renderAll(){renderMeta();renderChart();renderDrawer();updBtns()}
     const st=await kvGet("handle");
     if(!st&&window.showOpenFilePicker){
       const eingebettet=window.top!==window;
-      banner('<b>Änderungen werden noch nicht gespeichert:</b> keine Datei verbunden, es wird die eingebettete Vorlage gezeigt. <button class="btn pri" id="bConn">YAML-Datei verbinden</button><br><span style="color:var(--text-2)">Einmalig die YAML-Datei (z. B. <b>data.yaml</b>) im Ordner wählen und im Dialog <b>„Bei jedem Besuch zulassen"</b> anklicken. Danach lädt und speichert die Seite die Datei selbst.'+(eingebettet?' <b>Diese Seite läuft in einem eingebetteten Fenster (z. B. IDE-Vorschau), dort ist das gesperrt: bitte direkt in Edge oder Chrome öffnen.</b>':'')+'</span>');
+      banner('<b>Änderungen werden noch nicht gespeichert:</b> keine Datei verbunden, es wird die eingebettete Vorlage gezeigt. <button class="btn pri" id="bConn">YAML-Datei verbinden</button><br><span style="color:var(--text-2)">Einmalig die eigene YAML-Datei wählen und im Dialog <b>„Bei jedem Besuch zulassen"</b> anklicken. Danach lädt und speichert die Seite die Datei selbst.'+(eingebettet?' <b>Diese Seite läuft in einem eingebetteten Fenster (z. B. IDE-Vorschau), dort ist das gesperrt: bitte direkt in Edge oder Chrome öffnen.</b>':'')+'</span>');
       $("#bConn").onclick=async()=>{await doOpen();if(handle)$("#banner").style.display="none"};
     }
     if(st){
