@@ -1,0 +1,55 @@
+# Projektplan, Quelle für den Editor (gantt.html)
+#
+# Regeln:
+#   dauer        Arbeitstage (Wochenenden und "frei" zählen nicht), 0 erlaubt; entfällt bei Meilensteinen
+#   nach         ID oder Liste von IDs; Start am nächsten Arbeitstag nach dem spätesten Ende
+#   mit          ID; gleicher Start wie diese Aufgabe
+#   start        festes Datum (überschreibt nach/mit)
+#   versatz      zusätzliche Arbeitstage auf den Start
+#   fortschritt  0 bis 1
+#   typ          arbeit (Standard) | doku | meilenstein
+#   farbe        stahl | salbei | sand | flieder | schiefer | oliv | taupe | himmel (Phase oder Aufgabe, optional)
+
+titel: Kamerabasierte Prozessüberwachung im FDM-Druck zur automatischen Erkennung von Druckfehlern
+autor: Max Mustermann
+start: 2026-10-05
+frei:
+  - 2026-11-20                  # einzelner Tag (Exkursion)
+  - 2026-12-24..2027-01-01      # Zeitraum (Weihnachtsschließung)
+
+phasen:
+  - name: Einarbeitung und Stand der Technik
+    aufgaben:
+      - {id: einarb, name: "Einarbeitung in FDM-Drucker, Kamera-Hardware und Bildverarbeitung", dauer: 3, fortschritt: 1}
+      - {id: lit, name: Literaturrecherche zu In-situ-Monitoring im FDM-Druck, nach: einarb, dauer: 8, fortschritt: 0.5}
+      - {id: anforderungen, name: Anforderungsliste an das Überwachungssystem, nach: lit, dauer: 3}
+
+  - name: Konzept und Aufbau des Versuchsstands
+    aufgaben:
+      - {id: konzept, name: "Konzept für Kameraposition, Beleuchtung und Auslösung", nach: anforderungen, dauer: 5}
+      - {id: beschaffung, name: "Beschaffung von Kamera, Optik und Beleuchtung", notiz: Lieferzeit ca. 2 Wochen, farbe: sand, mit: konzept, versatz: 2, dauer: 10}
+      - {id: aufbau, name: Mechanischer und elektrischer Aufbau am Drucker, nach: [konzept, beschaffung], dauer: 6}
+      - {id: doku-1, name: Dokumentation, notiz: "Kapitel 1 und 2 (Einleitung, Stand der Technik)", typ: doku, mit: konzept, dauer: 10}
+      - {id: bereit, name: Versuchsstand betriebsbereit, typ: meilenstein, nach: aufbau}
+
+  - name: Bilderfassung und Datensatz
+    aufgaben:
+      - {id: aufnahme-sw, name: Software zur schichtsynchronen Bildaufnahme, nach: konzept, dauer: 8}
+      - {id: testdrucke, name: Testdrucke mit gezielt erzeugten Druckfehlern, notiz: "Warping, Stringing, Unterextrusion", nach: [bereit, aufnahme-sw], dauer: 8}
+      - {id: annotation, name: Annotation des Bilddatensatzes, mit: testdrucke, versatz: 3, dauer: 8}
+      - {id: doku-2, name: Dokumentation, notiz: Kapitel 3 (Konzept und Versuchsstand), typ: doku, mit: testdrucke, dauer: 6}
+      - {id: zwischen, name: Zwischenpräsentation in der Arbeitsgruppe, typ: meilenstein, start: 2026-12-10}
+
+  - name: Fehlererkennung und Evaluation
+    aufgaben:
+      - {id: modell, name: Training eines Klassifikationsmodells für Druckfehler, nach: annotation, dauer: 8}
+      - {id: vergleich, name: Vergleich mit klassischer Bildverarbeitung, notiz: Schwellwert- und Kantenverfahren, mit: modell, versatz: 2, dauer: 5}
+      - {id: online, name: Integration der Erkennung in den laufenden Druckprozess, nach: modell, dauer: 5}
+      - {id: eval, name: Evaluation an Validierungsdrucken, notiz: Erkennungsrate und Fehlalarme, nach: [online, vergleich], dauer: 5}
+
+  - name: Ausarbeitung und Abschluss
+    aufgaben:
+      - {id: doku-3, name: Dokumentation, notiz: "Kapitel 4 bis 6 (Umsetzung, Ergebnisse, Fazit)", typ: doku, mit: online, dauer: 12}
+      - {id: korrektur, name: Korrekturlesen und Feedback der Betreuung einarbeiten, nach: [doku-3, eval], dauer: 4}
+      - {id: abgabe, name: Abgabe der Projektarbeit, typ: meilenstein, nach: korrektur}
+      - {id: praesentation, name: Vorbereitung der Abschlusspräsentation, nach: abgabe, dauer: 3}
